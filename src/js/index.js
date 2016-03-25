@@ -44,6 +44,7 @@ tributeApp.controller('contentCtrl', ['$scope', '$http', function($scope, $http)
     var wikiURL = $scope.baseWikiString + $scope.title;
     $http.jsonp(wikiURL)
       .then(function(response) {
+        $scope.pageId = '';
         var pages = response.data.query.pages;
         for (var page in pages) {
           if (pages.hasOwnProperty(page)) {
@@ -88,6 +89,8 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
     var wikiImageURL = $scope.wikiImageBaseURL + $scope.title;
     $http.jsonp(wikiImageURL)
       .then(function(response) {
+        $scope.images = [];
+        $scope.imgIndex = 0;
         var query = response.data.query;
         if (query) {
           var pages = query.pages;
