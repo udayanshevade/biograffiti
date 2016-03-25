@@ -29,6 +29,7 @@ tributeApp.controller('mainCtrl', ['$scope', function($scope) {
   };
 
   $scope.newSearch = function() {
+    $scope.imgIndex = 0;
     var query = $scope.title;
     $scope.title = $scope.capitalize(query);
     $scope.$broadcast('new-search');
@@ -90,7 +91,6 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
     $http.jsonp(wikiImageURL)
       .then(function(response) {
         $scope.images = [];
-        $scope.imgIndex = 0;
         var query = response.data.query;
         if (query) {
           var pages = query.pages;
