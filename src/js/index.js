@@ -36,14 +36,12 @@ tributeApp.controller('mainCtrl', ['$scope', function($scope) {
 
 tributeApp.controller('contentCtrl', ['$scope', '$http', function($scope, $http) {
 
-  $scope.baseWikiString = 'https://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK&action=query&prop=extracts&format=json&titles=';
+  $scope.baseWikiString = 'https://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK&action=query&prop=extracts&format=json&redirects&titles=';
 
   $scope.getWikiContent = function() {
     var wikiURL = $scope.baseWikiString + $scope.title;
     $http.jsonp(wikiURL)
       .then(function(response) {
-      $scope.content = '';
-      $scope.pageId = '';
         var pages = response.data.query.pages;
         for (var page in pages) {
           if (pages.hasOwnProperty(page)) {
@@ -67,7 +65,7 @@ tributeApp.controller('contentCtrl', ['$scope', '$http', function($scope, $http)
 
 tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
 
-  $scope.wikiImageBaseURL = 'https://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK&format=json&action=query&prop=imageinfo&iiprop=url&generator=images&titles=';
+  $scope.wikiImageBaseURL = 'https://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK&format=json&action=query&redirects&prop=imageinfo&iiprop=url&generator=images&titles=';
 
   $scope.switchSlide = function() {
     $scope.images.forEach(function(image) {
@@ -85,7 +83,6 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
     var wikiImageURL = $scope.wikiImageBaseURL + $scope.title;
     $http.jsonp(wikiImageURL)
       .then(function(response) {
-      $scope.images = [];
         var pages = response.data.query.pages;
         if (pages.hasOwnProperty('-1')) {
           var i, url;
