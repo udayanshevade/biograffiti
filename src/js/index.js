@@ -1,21 +1,24 @@
-var tributeApp = angular.module('tributeApp', ['ngSanitize', 'ngAnimate']);
+var tributeApp = angular.module('tributeApp', ['ngSanitize']);
 
 tributeApp.controller('mainCtrl', ['$scope', function($scope) {
 
-  $scope.title = 'Albert Einstein';
+  $scope.title = 'Charles Darwin';
 
   $scope.content = '';
 
-  $scope.images = [];
-  $scope.imgIndex = 0;
+  $scope.images = [{
+    'src': 'http://placehold.it/400/400',
+    'visible': true
+  }];
+
+  $scope.imgIndex = 1;
 
   $scope.pageId = '';
 
   $scope.errorMsg = '<h3 class="error">Could not find the appropriate page at this time. Please try again, or use a different search.</h3>';
 
   $scope.capitalize = function(str) {
-    var char,
-        splitStr = str.split(' '),
+    var splitStr = str.split(' '),
         newStr = [];
     splitStr.forEach(function(substr) {
       newStr.push(
@@ -26,9 +29,6 @@ tributeApp.controller('mainCtrl', ['$scope', function($scope) {
   };
 
   $scope.newSearch = function() {
-    $scope.content = '';
-    $scope.images = [];
-    $scope.imgIndex = 0;
     var query = $scope.title;
     $scope.title = $scope.capitalize(query);
     $scope.$broadcast('new-search');
@@ -44,14 +44,13 @@ tributeApp.controller('contentCtrl', ['$scope', '$http', function($scope, $http)
     var wikiURL = $scope.baseWikiString + $scope.title;
     $http.jsonp(wikiURL)
       .then(function(response) {
-        console.log(response);
         var pages = response.data.query.pages;
         for (var page in pages) {
           if (pages.hasOwnProperty(page)) {
             var extract = pages[page].extract;
-            extract ? $scope.content = extract : $scope.content = $scope.errorMsg;
+            if (extract) { $scope.content = extract; } else { $scope.content = $scope.errorMsg; }
 
-            page > -1 ? $scope.pageId = '?curid=' + page : $scope.pageId = '';
+            if (page > -1) { $scope.pageId = '?curid=' + page; } else { $scope.pageId = ''; }
           }
         }
       }, function() {
@@ -63,6 +62,8 @@ tributeApp.controller('contentCtrl', ['$scope', '$http', function($scope, $http)
     $scope.getWikiContent();
   });
 
+
+  $scope.content = '';
   $scope.getWikiContent();
 
 }]);
@@ -79,7 +80,7 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
   };
 
   $scope.cycleNext = function() {
-    $scope.imgIndex < $scope.images.length - 1 ? $scope.imgIndex++ : $scope.imgIndex = 0;
+    if ($scope.imgIndex < $scope.images.length - 1) { $scope.imgIndex++; } else { $scope.imgIndex = 0; }
     $scope.switchSlide();
   };
 
@@ -93,13 +94,15 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
           if (pages.hasOwnProperty('-1')) {
             var i, url;
             for (i in pages) {
-              url = pages[i].imageinfo[0].url;
-              if (url.indexOf('.jpg') > 0 ||
-                 url.indexOf('.png') > 0) {
-                $scope.images.push({
-                  'src': url,
-                  'visible': false
-                });
+              if (pages.hasOwnProperty(i)) {
+                url = pages[i].imageinfo[0].url;
+                if (url.indexOf('.jpg') > 0 ||
+                   url.indexOf('.png') > 0) {
+                  $scope.images.push({
+                    'src': url,
+                    'visible': false
+                  });
+                }
               }
             }
             $scope.switchSlide();
@@ -114,6 +117,7 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.fetchImages();
   });
 
+  $scope.images = [];
   $scope.fetchImages();
 
 }]);
