@@ -1,0 +1,156 @@
+$font-family: "Open Sans", sans-serif;
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: inherit;
+  &:before {
+    @extend *;
+  }
+  &:after {
+    @extend *;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.main-header {
+  height: 5rem;
+  background-color: #000;
+}
+
+.search-form {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
+.search-input {
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: 0 0 0 1rem;
+  font: 2.5rem $font-family;
+  text-transform: uppercase;
+  background-color: #000;
+  outline: none;
+  border: none;
+  color: #999;
+  transition: color 0.25s ease-in-out;
+
+  &:hover, &:focus {
+    color: #fff;
+  }
+
+  &::-webkit-input-placeholder {
+    color: #999;
+  }
+}
+
+.search-btn {
+  display: inline;
+  position: absolute;
+  font: 2.5rem $font-family;
+  right: 0;
+  top: calc(50% - 2rem);
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  color: #999;
+  transition: color 0.25s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.content-header {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.content__title {
+  font: 3rem $font-family;
+  margin: 1rem 0 0.5rem;
+  text-transform: uppercase;
+}
+
+.content__img {
+  float: left;
+  width: 400px;
+  max-width: 100%;
+  padding: 0 0.5rem;
+}
+
+.content__body {
+  font-family: $font-family;
+  text-align: justify;
+  padding: 0 1rem;
+
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2.25rem;
+  }
+  h4 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1.85rem;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+}
+
+.content__attribution {
+  display: inline-block;
+  float: right;
+  text-align: right;
+}
+
+.attribution__link {
+  font: 700 small-caps 2rem $font-family;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.attribution__p {
+  margin-top: 0.5rem;
+  font-weight: 300;
+}
+
+/* slides animation css */
+
+.slide {
+  opacity: 0.8;
+  -webkit-transition: opacity linear 0.25s;
+  -moz-transition: opacity linear 0.25s;
+  -o-transition: opacity linear 0.25s;
+  transition: opacity linear 0.25s;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
