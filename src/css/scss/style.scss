@@ -136,7 +136,7 @@ html, body {
   @include animation-iteration-count(infinite);
 
   &.scroll-down {
-    @include position(absolute, null null 2rem calc(50% - 3rem))
+    @include position(absolute, null null 2rem calc(50% - 4rem))
   }
 
   &.scroll-up {
