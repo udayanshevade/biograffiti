@@ -11,6 +11,8 @@ tributeApp.controller('mainCtrl', ['$scope', function($scope) {
 
   $scope.pageId = '';
 
+  $scope.errorMsg = '<h3 class="error">Could not find the appropriate page at this time. Please try again, or use a different search.</h3>';
+
   $scope.capitalize = function(str) {
     var char,
         splitStr = str.split(' '),
@@ -50,8 +52,8 @@ tributeApp.controller('contentCtrl', ['$scope', '$http', function($scope, $http)
             $scope.pageId = '?curid=' + page;
           }
         }
-      }, function(e) {
-        console.log(e);
+      }, function() {
+        $scope.content = $scope.errorMsg;
       });
   };
 
@@ -98,8 +100,8 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
           }
           $scope.switchSlide();
         }
-      }, function(e) {
-        console.log(e);
+      }, function() {
+        $scope.content = $scope.errorMsg;
       });
   };
 
