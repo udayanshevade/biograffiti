@@ -42,12 +42,12 @@ module.exports = function(grunt) {
             'dist/js/index.min.js': [
                 'src/js/lib/angular.min.js',
                 'src/js/lib/angular-sanitize.min.js',
+                'src/js/index.js',
+                'src/js/Services/SmoothScrollService.js',
                 'src/js/Controllers/MainCtrl.js',
                 'src/js/Controllers/ContentCtrl.js',
                 'src/js/Controllers/ImgCtrl.js',
-                'src/js/Services/SmoothScrollService.js',
                 'src/js/Directives/ScrollDirective.js',
-                'src/js/index.js'
             ]
         },
         'processhtml': {
