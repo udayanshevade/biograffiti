@@ -36,12 +36,17 @@ module.exports = function(grunt) {
             }
         },
         'jshint': {
-            'all': ['Gruntfile.js', 'src/js/index.js']
+            'all': ['Gruntfile.js', 'src/js/index.js', 'src/js/Controllers/*.js', 'src/js/Services/*.js', 'src/js/Directives/*.js']
         },
         'uglify': {
             'dist/js/index.min.js': [
                 'src/js/lib/angular.min.js',
                 'src/js/lib/angular-sanitize.min.js',
+                'src/js/Controllers/MainCtrl.js',
+                'src/js/Controllers/ContentCtrl.js',
+                'src/js/Controllers/ImgCtrl.js',
+                'src/js/Services/SmoothScrollService.js',
+                'src/js/Directives/ScrollDirective.js',
                 'src/js/index.js'
             ]
         },
@@ -58,7 +63,7 @@ module.exports = function(grunt) {
               'tasks': ['jshint']
             },
             'scripts': {
-                'files': 'src/index.js',
+                'files': ['src/js/Controllers/*.js', 'src/js/Services/*.js', 'src/js/Directives/*.js', 'src/js/index.js'],
                 'tasks': ['jshint', 'uglify'],
                 'options': {
                     'spawn': false,
