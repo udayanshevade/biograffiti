@@ -44,12 +44,14 @@ tributeApp.controller('contentCtrl', ['$scope', '$http', function($scope, $http)
     var wikiURL = $scope.baseWikiString + $scope.title;
     $http.jsonp(wikiURL)
       .then(function(response) {
+        console.log(response);
         var pages = response.data.query.pages;
         for (var page in pages) {
           if (pages.hasOwnProperty(page)) {
-            $scope.content =
-              pages[page].extract;
-            $scope.pageId = '?curid=' + page;
+            var extract = pages[page].extract;
+            extract ? $scope.content = extract : $scope.content = $scope.errorMsg;
+
+            page > -1 ? $scope.pageId = '?curid=' + page : $scope.pageId = '';
           }
         }
       }, function() {
@@ -85,20 +87,23 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
     var wikiImageURL = $scope.wikiImageBaseURL + $scope.title;
     $http.jsonp(wikiImageURL)
       .then(function(response) {
-        var pages = response.data.query.pages;
-        if (pages.hasOwnProperty('-1')) {
-          var i, url;
-          for (i in pages) {
-            url = pages[i].imageinfo[0].url;
-            if (url.indexOf('.jpg') > 0 ||
-               url.indexOf('.png') > 0) {
-              $scope.images.push({
-                'src': url,
-                'visible': false
-              });
+        var query = response.data.query;
+        if (query) {
+          var pages = query.pages;
+          if (pages.hasOwnProperty('-1')) {
+            var i, url;
+            for (i in pages) {
+              url = pages[i].imageinfo[0].url;
+              if (url.indexOf('.jpg') > 0 ||
+                 url.indexOf('.png') > 0) {
+                $scope.images.push({
+                  'src': url,
+                  'visible': false
+                });
+              }
             }
+            $scope.switchSlide();
           }
-          $scope.switchSlide();
         }
       }, function() {
         $scope.content = $scope.errorMsg;
