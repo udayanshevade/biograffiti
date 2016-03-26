@@ -40,7 +40,7 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
           }
         }
       }, function() {
-        $scope.content = $scope.errorMsg;
+        $scope.images = [];
       });
   };
 

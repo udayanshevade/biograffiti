@@ -190,11 +190,32 @@ html {
   text-transform: uppercase;
 }
 
-.content__img {
+.content__img-slides {
+  position: relative;
   float: left;
   width: 400px;
   max-width: 100%;
   padding: 0 0.5rem;
+
+  &:hover {
+    .img-caption {
+      opacity: 0;
+    }
+  }
+}
+
+.content__img {
+  width: 100%;
+}
+
+.img-caption {
+  @include position(absolute, 0 null null null);
+  font: bold small-caps 2rem $font-family;
+  width: calc(100% - 1rem);
+  text-align: center;
+  background-color: #ccc;
+  color: #777;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .content__body {

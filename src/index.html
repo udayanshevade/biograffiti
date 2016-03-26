@@ -26,10 +26,11 @@
         <header class="content-header" id="content-header">
           <h2 class="content__title" ng-bind="title"></h2>
         </header>
-        <div class="content__img-slides" ng-controller="imgCtrl">
+        <div class="content__img-slides" ng-controller="imgCtrl" ng-show="images.length">
           <div class="slide" ng-repeat="img in images">
             <img class="content__img" ng-src="{{ img.src }}" alt="Image of interest" ng-click="cycleNext()" ng-show="img.visible">
           </div>
+          <span class="img-caption">click to see more</span>
         </div>
         <div class="content__body">
           <div class="content__text" ng-bind-html="content"></div>

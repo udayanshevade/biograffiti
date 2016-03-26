@@ -299,11 +299,30 @@ html::-webkit-scrollbar-thumb {
   text-transform: uppercase;
 }
 
-.content__img {
+.content__img-slides {
+  position: relative;
   float: left;
   width: 400px;
   max-width: 100%;
   padding: 0 0.5rem;
+}
+.content__img-slides:hover .img-caption {
+  opacity: 0;
+}
+
+.content__img {
+  width: 100%;
+}
+
+.img-caption {
+  position: absolute;
+  top: 0;
+  font: bold small-caps 2rem "Arial", sans-serif;
+  width: calc(100% - 1rem);
+  text-align: center;
+  background-color: #ccc;
+  color: #777;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .content__body {

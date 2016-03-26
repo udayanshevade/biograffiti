@@ -13,7 +13,7 @@ tributeApp.controller('mainCtrl', ['$scope', 'smoothScrollService', '$window', f
 
   $scope.pageId = '';
 
-  $scope.errorMsg = '<h3 class="error">could not find the appropriate page at this time. please try again, or use a different search. alternate spellings, spacing or punctuation can help.</h3>';
+  $scope.errorMsg = '<h3 class="error">could not find the right page at this time. please try again, or use a different search: alternate spellings, spacing or punctuation can help, e.g. "louis c k" instead of "louis ck."</h3>';
 
   $scope.capitalize = function(str) {
     var splitStr = str.split(' '),
