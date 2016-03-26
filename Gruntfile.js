@@ -64,14 +64,14 @@ module.exports = function(grunt) {
             },
             'scripts': {
                 'files': ['src/js/Controllers/*.js', 'src/js/Services/*.js', 'src/js/Directives/*.js', 'src/js/index.js'],
-                'tasks': ['jshint', 'uglify'],
+                'tasks': ['jshint', 'uglify', 'processhtml'],
                 'options': {
                     'spawn': false,
                 },
             },
             'styles': {
               'files': ['src/css/scss/style.scss'],
-              'tasks': ['sass', 'cssmin']
+              'tasks': ['sass', 'cssmin', 'processhtml']
             },
             'html': {
               'files': ['src/index.html'],
