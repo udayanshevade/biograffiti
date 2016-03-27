@@ -33,6 +33,8 @@ tributeApp.controller('mainCtrl', ['$scope', 'smoothScrollService', '$window', f
   $scope.newSearch = function() {
     if ($scope.query.title) {
       $scope.imgIndex = 0;
+      var query = $scope.query.title;
+      $scope.query.title = $scope.capitalize(query);
       $scope.result.queryComplete = false;
       $scope.$broadcast('new-search');
     }

@@ -6,7 +6,9 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.images.forEach(function(image) {
       image.visible = false;
     });
-    $scope.images[$scope.imgIndex].visible = true;
+    if ($scope.images.length) {
+      $scope.images[$scope.imgIndex].visible = true;
+    }
   };
 
   $scope.cycleNext = function() {
