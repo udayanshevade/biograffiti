@@ -26,7 +26,7 @@
         </datalist>
         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
         <span class="autocomplete-error">try another search term</span>
-        <i class="fa fa-chevron-down scroll scroll-down" ng-click="goTo('content-header')"></i>
+        <i class="fa fa-chevron-down scroll scroll-down" ng-click="goTo('content-header')" ng-class=" {'scroll-bounce': result.queryComplete} "></i>
       </form>
     </header>
     <main class="main">
@@ -41,15 +41,15 @@
           <span class="img-caption">click to see more</span>
         </div>
         <div class="content__body">
-          <div class="content__text" ng-bind-html="content"></div>
+          <div class="content__text" ng-bind-html="result.content"></div>
           <div class="content__attribution">
-            <h3 class="attribution__link"> <a class="attribution__link-tag" ng-href="https://en.wikipedia.org/{{pageId }}">source</a></h3>
+            <h3 class="attribution__link"> <a class="attribution__link-tag" ng-href="https://en.wikipedia.org/{{result.pageId}}">source</a></h3>
             <p class="attribution__p">Courtesy of the Wikimedia API</p>
           </div>
         </div>
       </section>
 
-      <i class="fa fa-chevron-up scroll scroll-up" ng-click="goTo('search')" ng-show="scrolled"></i>
+      <i class="fa fa-chevron-up scroll scroll-up scroll-bounce" ng-click="goTo('search')" ng-show="scrolled"></i>
     </main>
 
   </section>

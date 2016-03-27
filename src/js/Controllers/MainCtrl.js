@@ -4,7 +4,11 @@ tributeApp.controller('mainCtrl', ['$scope', 'smoothScrollService', '$window', f
     title: 'Charles Darwin'
   };
 
-  $scope.content = '';
+  $scope.result = {
+    'content': '',
+    'pageId': '',
+    'queryComplete': true
+  };
 
   $scope.images = [{
     'src': 'http://placehold.it/400/400',
@@ -12,8 +16,6 @@ tributeApp.controller('mainCtrl', ['$scope', 'smoothScrollService', '$window', f
   }];
 
   $scope.imgIndex = 1;
-
-  $scope.pageId = '';
 
   $scope.errorMsg = '<h3 class="error">could not find the right page at this time. please try again, or use a different search: correct spelling, spacing or punctuation can help, e.g. "louis c.k." instead of "louis ck".</h3>';
 
@@ -30,6 +32,7 @@ tributeApp.controller('mainCtrl', ['$scope', 'smoothScrollService', '$window', f
 
   $scope.newSearch = function() {
     $scope.imgIndex = 0;
+    $scope.result.queryComplete = false;
     $scope.$broadcast('new-search');
   };
 

@@ -6,18 +6,19 @@ tributeApp.controller('contentCtrl', ['$scope', '$http', function($scope, $http)
     var wikiURL = $scope.baseWikiString + $scope.query.title;
     $http.jsonp(wikiURL)
       .then(function(response) {
-        $scope.pageId = '';
+        $scope.result.queryComplete = true;
+        $scope.result.pageId = '';
         var pages = response.data.query.pages;
         for (var page in pages) {
           if (pages.hasOwnProperty(page)) {
             var extract = pages[page].extract;
-            if (extract) { $scope.content = extract; } else { $scope.content = $scope.errorMsg; }
+            if (extract) { $scope.result.content = extract; } else { $scope.result.content = $scope.errorMsg; }
 
-            if (page > -1) { $scope.pageId = '?curid=' + page; } else { $scope.pageId = ''; }
+            if (page > -1) { $scope.result.pageId = '?curid=' + page; } else { $scope.result.pageId = ''; }
           }
         }
       }, function() {
-        $scope.content = $scope.errorMsg;
+        $scope.result.content = $scope.errorMsg;
       });
   };
 
@@ -26,7 +27,7 @@ tributeApp.controller('contentCtrl', ['$scope', '$http', function($scope, $http)
   });
 
 
-  $scope.content = '';
+  $scope.result.content = '';
   $scope.getWikiContent();
 
 }]);

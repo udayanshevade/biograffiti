@@ -119,13 +119,6 @@ html::-webkit-scrollbar-thumb {
   -moz-flex-direction: column;
   flex-direction: column;
   -ms-flex-direction: column;
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  box-lines: multiple;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-box-pack: center;
   -moz-box-pack: center;
   box-pack: center;
@@ -135,10 +128,10 @@ html::-webkit-scrollbar-thumb {
   -o-justify-content: center;
   justify-content: center;
   -ms-flex-pack: center;
-  -webkit-align-content: center;
-  -moz-align-content: center;
-  align-content: center;
-  -ms-flex-line-pack: center;
+  -webkit-align-content: space-around;
+  -moz-align-content: space-around;
+  align-content: space-around;
+  -ms-flex-line-pack: distribute;
   -webkit-box-align: center;
   -moz-box-align: center;
   box-align: center;
@@ -156,7 +149,7 @@ html::-webkit-scrollbar-thumb {
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
-@media (min-width: 500px) {
+@media screen and (min-width: 500px) {
   .search-form {
     -webkit-box-orient: horizontal;
     -moz-box-orient: horizontal;
@@ -168,6 +161,13 @@ html::-webkit-scrollbar-thumb {
     -moz-flex-direction: row;
     flex-direction: row;
     -ms-flex-direction: row;
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    box-lines: multiple;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 }
 
@@ -183,7 +183,6 @@ html::-webkit-scrollbar-thumb {
 
 .main-header__titles {
   width: 100%;
-  margin-bottom: 10rem;
   color: rgba(0, 0, 0, 0.75);
   text-decoration: none;
 }
@@ -198,13 +197,18 @@ html::-webkit-scrollbar-thumb {
 }
 
 .main-subtitle {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: normal;
+}
+@media screen and (max-height: 400px) {
+  .main-subtitle {
+    display: none;
+  }
 }
 
 .form-title {
   font: small-caps 2rem "Arial", sans-serif;
-  color: #333;
+  color: #999;
   -webkit-animation-delay: 0.5s;
   -moz-animation-delay: 0.5s;
   animation-delay: 0.5s;
@@ -304,6 +308,8 @@ html::-webkit-scrollbar-thumb {
   margin: 2rem;
   padding: 2rem;
   cursor: pointer;
+}
+.scroll.scroll-bounce {
   -webkit-animation: bounce 1s ease-in-out;
   -moz-animation: bounce 1s ease-in-out;
   animation: bounce 1s ease-in-out;
@@ -312,9 +318,8 @@ html::-webkit-scrollbar-thumb {
   animation-iteration-count: infinite;
 }
 .scroll.scroll-down {
-  position: absolute;
-  bottom: 2rem;
-  left: calc(50% - 4rem);
+  width: 100%;
+  position: relative;
   -webkit-animation-delay: 1.75s;
   -moz-animation-delay: 1.75s;
   animation-delay: 1.75s;

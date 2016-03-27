@@ -1,7 +1,5 @@
 @import "bourbon/bourbon";
-@import "lib/include-media";
 
-$breakpoints: (phone: 320px, small: 500px, tablet: 768px, desktop: 1024px);
 $font-family: "Arial", sans-serif;
 $container-width: 900px;
 $lightblack: rgba(0,0,0,0.3);
@@ -83,16 +81,16 @@ html {
   height: 100%;
   @include display(flex);
   @include flex-direction(column);
-  @include flex-wrap(wrap);
   @include justify-content(center);
-  @include align-content(center);
+  @include align-content(space-around);
   @include align-items(center);
   /* fade in / descend animation */
   @include animation(fadeIn 0.5s ease-in-out, descend 0.5s ease-in-out);
   @include animation-fill-mode(forwards);
 
-  @include media(">=small") {
+  @media screen and (min-width: 500px) {
     @include flex-direction(row);
+    @include flex-wrap(wrap);
   }
 }
 
@@ -110,7 +108,6 @@ html {
 
 .main-header__titles {
   width: 100%;
-  margin-bottom: 10rem;
   color: rgba(0,0,0,0.75);
   text-decoration: none;
 
@@ -126,13 +123,17 @@ html {
 }
 
 .main-subtitle {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: normal;
+
+  @media screen and (max-height: 400px) {
+    display: none;
+  }
 }
 
 .form-title {
   font: small-caps 2rem $font-family;
-  color: #333;
+  color: #999;
   @include animation-delay(0.5s);
 }
 
@@ -196,11 +197,14 @@ html {
   margin: 2rem;
   padding: 2rem;
   cursor: pointer;
-  @include animation(bounce 1s ease-in-out);
-  @include animation-iteration-count(infinite);
+  &.scroll-bounce {
+    @include animation(bounce 1s ease-in-out);
+    @include animation-iteration-count(infinite);
+  }
 
   &.scroll-down {
-    @include position(absolute, null null 2rem calc(50% - 4rem));
+    width: 100%;
+    @include position(relative);
     @include animation-delay(1.75s);
   }
 
