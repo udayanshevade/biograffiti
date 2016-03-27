@@ -22,7 +22,9 @@ tributeApp.controller('formCtrl', ['$scope', '$http', '$timeout', function($scop
 
   $scope.setTimeout = function() {
     $scope.timeoutPromise = $timeout(function() {
-      $scope.getSearchOptions();
+      if ($scope.query.title) {
+        $scope.getSearchOptions();
+      }
     }, 80);
   };
 
@@ -36,6 +38,10 @@ tributeApp.controller('formCtrl', ['$scope', '$http', '$timeout', function($scop
 
       $scope.setTimeout();
     }
+  };
+
+  $scope.emptySearch = function() {
+    $scope.query.title = '';
   };
 
 }]);

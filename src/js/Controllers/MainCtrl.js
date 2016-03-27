@@ -31,9 +31,11 @@ tributeApp.controller('mainCtrl', ['$scope', 'smoothScrollService', '$window', f
   };
 
   $scope.newSearch = function() {
-    $scope.imgIndex = 0;
-    $scope.result.queryComplete = false;
-    $scope.$broadcast('new-search');
+    if ($scope.query.title) {
+      $scope.imgIndex = 0;
+      $scope.result.queryComplete = false;
+      $scope.$broadcast('new-search');
+    }
   };
 
   $scope.goTo = function(e) {

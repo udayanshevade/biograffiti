@@ -14,16 +14,21 @@
 <body>
   <section class="page" scroll ng-controller="mainCtrl as main">
     <header class="main-header" ng-controller="formCtrl">
-      <form class="search-form" id="search" ng-submit="newSearch()" ng-class="{ formerror: !options.length }">
+      <form class="search-form" id="search-form" ng-submit="newSearch()" ng-class="{ formerror: !options.length }">
         <a class="main-header__titles" href="">
           <h1 class="main-header__title main-title">biograffiti</h1>
           <h3 class="main-header__title main-subtitle">distraction-free reads about people</h3>
         </a>
         <h2 class="form-title">read about</h2>
-        <input class="search-input" list="search-options" placeholder="search" ng-model="query.title" autofocus ng-keyup="searchAutoComplete($event)">
-        <datalist id="search-options">
-          <option ng-repeat="option in options" ng-value="option">
-        </datalist>
+        <div class="search-box">
+          <input class="search-input" name="search" list="search-options" placeholder="search" ng-model="query.title" autofocus ng-keyup="searchAutoComplete($event)">
+          <datalist id="search-options">
+            <select name="search">
+              <option ng-repeat="option in options" ng-value="option"></option>
+            </select>
+          </datalist>
+          <i class="fa fa-times erase" ng-click="emptySearch()"></i>
+        </div>
         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
         <span class="autocomplete-error">try another search term</span>
         <i class="fa fa-chevron-down scroll scroll-down" ng-click="goTo('content-header')" ng-class=" {'scroll-bounce': result.queryComplete} "></i>
@@ -49,7 +54,7 @@
         </div>
       </section>
 
-      <i class="fa fa-chevron-up scroll scroll-up scroll-bounce" ng-click="goTo('search')" ng-show="scrolled"></i>
+      <i class="fa fa-chevron-up scroll scroll-up scroll-bounce" ng-click="goTo('search-form')" ng-show="scrolled"></i>
     </main>
 
   </section>

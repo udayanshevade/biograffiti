@@ -137,11 +137,23 @@ html {
   @include animation-delay(0.5s);
 }
 
-.search-input {
-  display: inline;
-  max-width: 95%;
+.search-box {
+  max-width: 90%;
   width: 400px;
-  padding: 1rem 0 1rem 1rem;
+  position: relative;
+}
+
+.erase {
+  @include position(absolute, calc(50% - 1.5rem) null null 0);
+  font-size: 3rem;
+  color: $lightblack;
+  cursor: pointer;
+  padding: 0 1rem;
+}
+
+.search-input {
+  max-width: 100%;
+  padding: 1rem 0 1rem 4rem;
   font: 3rem $font-family;
   text-transform: uppercase;
   background-color: transparent;
@@ -203,7 +215,7 @@ html {
   }
 
   &.scroll-down {
-    width: 100%;
+    margin: 0 50%;
     @include position(relative);
     @include animation-delay(1.75s);
   }
