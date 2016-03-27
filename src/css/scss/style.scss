@@ -108,6 +108,28 @@ html {
   }
 }
 
+.main-header__titles {
+  width: 100%;
+  margin-bottom: 10rem;
+  color: rgba(0,0,0,0.75);
+  text-decoration: none;
+
+  &:hover, &:visited, &:active, &:focus {
+    color: rgba(0,0,0,0.75);
+    text-decoration: none;
+  }
+}
+
+.main-header__title {
+  margin: 0;
+  font: small-caps 5rem "Arial", sans-serif;
+}
+
+.main-subtitle {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
 .form-title {
   font: small-caps 2rem $font-family;
   color: #333;

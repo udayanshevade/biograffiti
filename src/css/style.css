@@ -181,6 +181,27 @@ html::-webkit-scrollbar-thumb {
   display: block;
 }
 
+.main-header__titles {
+  width: 100%;
+  margin-bottom: 10rem;
+  color: rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+}
+.main-header__titles:hover, .main-header__titles:visited, .main-header__titles:active, .main-header__titles:focus {
+  color: rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+}
+
+.main-header__title {
+  margin: 0;
+  font: small-caps 5rem "Arial", sans-serif;
+}
+
+.main-subtitle {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
 .form-title {
   font: small-caps 2rem "Arial", sans-serif;
   color: #333;

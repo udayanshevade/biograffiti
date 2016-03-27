@@ -15,6 +15,10 @@
   <section class="page" scroll ng-controller="mainCtrl as main">
     <header class="main-header" ng-controller="formCtrl">
       <form class="search-form" id="search" ng-submit="newSearch()" ng-class="{ formerror: !options.length }">
+        <a class="main-header__titles" href="">
+          <h1 class="main-header__title main-title">biograffiti</h1>
+          <h3 class="main-header__title main-subtitle">distraction-free reads about people</h3>
+        </a>
         <h2 class="form-title">read about</h2>
         <input class="search-input" list="search-options" placeholder="search" ng-model="query.title" autofocus ng-keyup="searchAutoComplete($event)">
         <datalist id="search-options">
