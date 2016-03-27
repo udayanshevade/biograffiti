@@ -13,18 +13,22 @@
 
 <body>
   <section class="page" scroll ng-controller="mainCtrl as main">
-    <header class="main-header">
-      <form class="search-form" id="search" ng-submit="newSearch()">
+    <header class="main-header" ng-controller="formCtrl">
+      <form class="search-form" id="search" ng-submit="newSearch()" ng-class="{ formerror: !options.length }">
         <h2 class="form-title">read about</h2>
-        <input class="search-input" placeholder="search" ng-model="title" autofocus>
+        <input class="search-input" list="search-options" placeholder="search" ng-model="query.title" autofocus ng-keyup="searchAutoComplete($event)">
+        <datalist id="search-options">
+          <option ng-repeat="option in options" ng-value="option">
+        </datalist>
         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+        <span class="autocomplete-error">try another search term</span>
         <i class="fa fa-chevron-down scroll scroll-down" ng-click="goTo('content-header')"></i>
       </form>
     </header>
     <main class="main">
       <section class="content-section" ng-controller="contentCtrl as content">
         <header class="content-header" id="content-header">
-          <h2 class="content__title" ng-bind="title"></h2>
+          <h2 class="content__title" ng-bind="query.title"></h2>
         </header>
         <div class="content__img-slides" ng-controller="imgCtrl" ng-show="images.length">
           <div class="slide" ng-repeat="img in images">
@@ -53,6 +57,7 @@
   <script src="js/index.js"></script>
   <script src="js/Services/SmoothScrollService.js"></script>
   <script src="js/Controllers/MainCtrl.js"></script>
+  <script src="js/Controllers/FormCtrl.js"></script>
   <script src="js/Controllers/ContentCtrl.js"></script>
   <script src="js/Controllers/ImgCtrl.js"></script>
   <script src="js/Directives/ScrollDirective.js"></script>

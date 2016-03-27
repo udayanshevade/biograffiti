@@ -44,10 +44,11 @@ module.exports = function(grunt) {
                 'src/js/lib/angular-sanitize.min.js',
                 'src/js/index.js',
                 'src/js/Services/SmoothScrollService.js',
+                'src/js/Controllers/FormCtrl.js',
                 'src/js/Controllers/MainCtrl.js',
                 'src/js/Controllers/ContentCtrl.js',
                 'src/js/Controllers/ImgCtrl.js',
-                'src/js/Directives/ScrollDirective.js',
+                'src/js/Directives/ScrollDirective.js'
             ]
         },
         'processhtml': {

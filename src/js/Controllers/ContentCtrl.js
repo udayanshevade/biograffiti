@@ -3,7 +3,7 @@ tributeApp.controller('contentCtrl', ['$scope', '$http', function($scope, $http)
   $scope.baseWikiString = 'https://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK&action=query&prop=extracts&format=json&redirects&titles=';
 
   $scope.getWikiContent = function() {
-    var wikiURL = $scope.baseWikiString + $scope.title;
+    var wikiURL = $scope.baseWikiString + $scope.query.title;
     $http.jsonp(wikiURL)
       .then(function(response) {
         $scope.pageId = '';

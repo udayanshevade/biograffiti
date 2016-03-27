@@ -1,6 +1,8 @@
 tributeApp.controller('mainCtrl', ['$scope', 'smoothScrollService', '$window', function($scope, smoothScrollService, $window) {
 
-  $scope.title = 'Charles Darwin';
+  $scope.query = {
+    title: 'Charles Darwin'
+  };
 
   $scope.content = '';
 
@@ -28,8 +30,6 @@ tributeApp.controller('mainCtrl', ['$scope', 'smoothScrollService', '$window', f
 
   $scope.newSearch = function() {
     $scope.imgIndex = 0;
-    var query = $scope.title;
-    $scope.title = $scope.capitalize(query);
     $scope.$broadcast('new-search');
   };
 

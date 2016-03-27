@@ -15,7 +15,7 @@ tributeApp.controller('imgCtrl', ['$scope', '$http', function($scope, $http) {
   };
 
   $scope.fetchImages = function() {
-    var wikiImageURL = $scope.wikiImageBaseURL + $scope.title;
+    var wikiImageURL = $scope.wikiImageBaseURL + $scope.query.title;
     $http.jsonp(wikiImageURL)
       .then(function(response) {
         $scope.images = [];
