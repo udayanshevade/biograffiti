@@ -181,6 +181,11 @@ html::-webkit-scrollbar-thumb {
   display: block;
 }
 
+.title-icon {
+  font-size: 4rem;
+  margin: 0 1rem 1rem;
+}
+
 .main-header__titles {
   width: 100%;
   color: rgba(0, 0, 0, 0.75);
